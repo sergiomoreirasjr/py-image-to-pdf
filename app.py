@@ -1,3 +1,5 @@
+from flask import Flask
+from multipleRoutes import multiple_routes
 from io import BytesIO
 from os.path import splitext
 
@@ -35,3 +37,9 @@ def converter():
     pdf_buffer.seek(0)
 
     return send_file(pdf_buffer, as_attachment=True, download_name='converted.pdf')
+
+
+app.register_blueprint(multiple_routes)
+
+if __name__ == '__main__':
+    app.run()
